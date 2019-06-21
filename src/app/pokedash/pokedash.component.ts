@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pokemon } from '../pokemon';
+import { PokeapiService } from '../pokeapi.service';
 
 @Component({
   selector: 'app-pokedash',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokedashComponent implements OnInit {
 
-  constructor() { }
+  pokemon: Pokemon[];
+
+  constructor(private pokeapiService: PokeapiService) { }
 
   ngOnInit() {
+    this.getPokemon();
+  }
+
+  getPokemon(): void {
+    this.pokeapiService.getPokemon()
+      .subscribe(pokemon => this.pokemon = pokemon);
   }
 
 }

@@ -6,3 +6,10 @@
     <img src="../../assets/images/findyourpokemon.png" class="Search">
 </div>
 <app-pokesearch></app-pokesearch>
+<ul class="pokemon">
+    <li *ngFor="let pokemon of pokemon.results">
+        <span class="badge">{{pokemon.name}}</span>
+        <app-pokesprite [pokenameUrl] = 'pokemon.name'>
+        </app-pokesprite>
+    </li>
+</ul>
